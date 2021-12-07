@@ -1,10 +1,8 @@
-
-const BASE_API = 'https://restcountries.eu/rest/v2/';
+const BASE_API = "https://restcountries.com/v2/regionalbloc/eu/";
 
 export class CountriesService {
-
   async getCountries() {
-    const response = await fetch(`${BASE_API}all`);
+    const response = await fetch(`${BASE_API}`);
     const countries = await response.json();
     return countries;
   }
@@ -19,13 +17,13 @@ export class CountriesService {
     return {
       countryName: countryToGuess.name,
       answers: this.getAnswers(this.countries, countryToGuess),
-      correctAnswer: countryToGuess.capital
-    }
+      correctAnswer: countryToGuess.capital,
+    };
   }
 
   getRandomCountry(countries) {
     const max = this.countries.length;
-    const idx = Math.floor(Math.random()*(max-0)+0);
+    const idx = Math.floor(Math.random() * (max - 0) + 0);
     return countries[idx];
   }
 
